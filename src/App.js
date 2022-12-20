@@ -7,6 +7,8 @@ import MainHeader from './components/MainHeader/MainHeader';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // run on the mounting of this component (Run only one)
+  // component ifecycle: componentDidMount
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn')
     // console.log(isLoggedIn);

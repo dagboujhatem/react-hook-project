@@ -11,16 +11,20 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+  // run if any dependency changes ([enteredEmail, enteredPassword] in this case)
+  // component ifecycle: componentDidUpdate
   useEffect(() => { 
     const identifier = setTimeout(()=>{
       console.log('checking for form validity')
       setFormIsValid(enteredEmail.includes('@') && enteredPassword.trim().length > 6);
     }, 500)
+    // run on unmount
+    // component ifecycle: componentWillUnmount
     return ()=>{
       console.log('Clean up')
       clearTimeout(identifier)
     }
-  }, [enteredEmail, enteredPassword])
+  }, [enteredEmail, enteredPassword]) // dependencies changes array
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
